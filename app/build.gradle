@@ -1,0 +1,104 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        applicationId "edu.uni.trainingjournal"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    def room_version = "2.2.5"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version" // For Kotlin use kapt instead of annotationProcessor
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$room_version"
+
+    // optional - RxJava support for Room
+    implementation "androidx.room:room-rxjava2:$room_version"
+
+    // optional - Guava support for Room, including Optional and ListenableFuture
+    implementation "androidx.room:room-guava:$room_version"
+
+    // Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    api 'com.google.dagger:dagger:2.27'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.27'
+    api 'com.google.dagger:dagger-android:2.27'
+    api 'com.google.dagger:dagger-android-support:2.27'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.27'
+
+    implementation 'com.google.android.material:material:1.2.1'
+
+    implementation 'com.bernaferrari.emojislider:emojislider:0.3.2'
+    implementation 'com.freeletics.rxredux:rxredux:1.0.1'
+    implementation 'com.github.duanhong169:drawabletoolbox:1.0.7'
+    implementation 'com.github.duanhong169:colorpicker:1.1.6'
+    implementation 'com.github.okdroid:checkablechipview:1.0.3'
+    implementation 'com.tbuonomo:creative-viewpager:1.0.1'
+    implementation 'me.saket:inboxrecyclerview:2.0.0-beta3'
+    implementation 'ru.cleverpumpkin:crunchycalendar:2.0.0'
+    implementation 'nz.co.trademe.covert:covert:2.0.0'
+    implementation "io.saeid:dialer-loading:1.0.0"
+    implementation 'com.github.pwittchen:rxbiometric:0.1.0'
+    implementation 'com.github.florent37:shapeofview:1.2.0'
+    implementation 'com.shopify:livedata-ktx:3.0.0'
+    implementation 'com.afollestad.rxkprefs:core:2.0.3'
+    implementation 'com.tinder.scarlet:scarlet:0.1.9'
+    implementation 'co.infinum:complexify-android:2.0.1'
+    implementation 'co.infinum:goldfinger:2.0.0'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
+    implementation 'com.squareup.moshi:moshi:1.9.2'
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.2'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation "io.reactivex.rxjava3:rxjava:3.0.1"
+
+    debugImplementation 'com.readystatesoftware.chuck:library:1.1.0'
+    releaseImplementation 'com.readystatesoftware.chuck:library-no-op:1.1.0'
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
+    testImplementation 'junit:junit:4.13.1'
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    debugImplementation 'im.dino:dbinspector:4.0.0'
+
+}
