@@ -12,7 +12,6 @@ import kotlinx.android.extensions.CacheImplementation
 import kotlinx.android.extensions.ContainerOptions
 import training.journal.R
 
-@ContainerOptions(cache = CacheImplementation.NO_CACHE)
 class LoginFragment : BaseFragment() {
 
     private var imageView: ImageView? = null
@@ -22,15 +21,14 @@ class LoginFragment : BaseFragment() {
     private var notExistAccTextView: TextView? = null
     private var loginButton: Button? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = super.onCreateView(inflater, container, savedInstanceState)
-        imageView = rootView?.findViewById(R.id.person_iv) as ImageView
-        emailEditText = rootView.findViewById(R.id.email_et) as EditText
-        passwordEditText = rootView.findViewById(R.id.password_et) as EditText
-        forgotPasswordTextView = rootView.findViewById(R.id.forgot_password_tv) as TextView
-        notExistAccTextView = rootView.findViewById(R.id.not_exist_acc_tv) as TextView
-        loginButton = rootView.findViewById(R.id.login_button)
-        return rootView
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        imageView = view.findViewById(R.id.person_iv) as ImageView
+        emailEditText = view.findViewById(R.id.email_et) as EditText
+        passwordEditText = view.findViewById(R.id.password_et) as EditText
+        forgotPasswordTextView = view.findViewById(R.id.forgot_password_tv) as TextView
+        notExistAccTextView = view.findViewById(R.id.not_exist_acc_tv) as TextView
+        loginButton = view.findViewById(R.id.login_button)
     }
 
     override fun getFragmentLayoutId(): Int = R.layout.fragment_login
