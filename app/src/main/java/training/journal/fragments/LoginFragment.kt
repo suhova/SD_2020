@@ -8,9 +8,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.extensions.CacheImplementation
+import kotlinx.android.extensions.ContainerOptions
 import training.journal.R
 
+@ContainerOptions(cache = CacheImplementation.NO_CACHE)
 class LoginFragment : BaseFragment() {
 
     private var imageView: ImageView? = null
@@ -22,12 +24,12 @@ class LoginFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = super.onCreateView(inflater, container, savedInstanceState)
-        imageView = person_iv
-        emailEditText = email_et
-        passwordEditText = password_et
-        forgotPasswordTextView = forgot_password_tv
-        notExistAccTextView = not_exist_acc_tv
-        loginButton = login_button
+        imageView = rootView?.findViewById(R.id.person_iv) as ImageView
+        emailEditText = rootView.findViewById(R.id.email_et) as EditText
+        passwordEditText = rootView.findViewById(R.id.password_et) as EditText
+        forgotPasswordTextView = rootView.findViewById(R.id.forgot_password_tv) as TextView
+        notExistAccTextView = rootView.findViewById(R.id.not_exist_acc_tv) as TextView
+        loginButton = rootView.findViewById(R.id.login_button)
         return rootView
     }
 

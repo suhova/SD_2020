@@ -7,4 +7,8 @@
     <string name="forgot_password"><u>Забыли свой пароль?</u></string>
     <string name="login">Войти</string>
     <string name="not_exist_acc"><u>Нет учётной записи?</u></string>
+    <string name="drawer_item_settings">Настройки</string>
+    <string name="drawer_item_bookmarks">Закладки</string>
+    <string name="drawer_item_favourites">Избранное</string>
+    <string name="drawer_item_found">Найти тренеровку</string>
 </resources>

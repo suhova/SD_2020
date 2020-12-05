@@ -4,8 +4,6 @@
     <style name="TrainingJournalTheme" parent="Theme.AppCompat.Light">
         <item name="android:screenOrientation">portrait</item>
         <item name="background">@color/white</item>
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="TrainingJournalTheme.NoActionBar">
