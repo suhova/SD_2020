@@ -7,6 +7,11 @@
     <string name="forgot_password"><u>Забыли свой пароль?</u></string>
     <string name="login">Войти</string>
     <string name="not_exist_acc"><u>Нет учётной записи?</u></string>
+    <string name="active_exercise_name">Упражнение</string>
+    <string name="parameter_goal_dummy">34</string>
+    <string name="parameter_text_dummy">Параметр1</string>
+    <string name="button_text_dummy">Подход 1/1</string>
+    <string name="next_exercise_dummy">Следующее упражнение</string>
     <string name="drawer_item_settings">Настройки</string>
     <string name="drawer_item_bookmarks">Закладки</string>
     <string name="drawer_item_favourites">Избранное</string>
