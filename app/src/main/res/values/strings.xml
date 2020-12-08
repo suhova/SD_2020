@@ -7,6 +7,7 @@
     <string name="forgot_password"><u>Forgot your password?</u></string>
     <string name="login">Log in</string>
     <string name="not_exist_acc"><u>Don’t have an account?</u></string>
+    <string name="add_workout">Add workout</string>
     <string name="share_exercise_template">Share exercise template</string>
     <string name="add_to_bookmarks">Add to bookmarks</string>
     <string name="choose_exercise_type">Choose exercise type</string>
