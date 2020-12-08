@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/TrainingJournalTheme">
         <activity
-            android:name="training.journal.activities.LoginActivity"
+            android:name="training.journal.activities.WorkoutActivity"
             android:configChanges="orientation|screenSize"
             android:hardwareAccelerated="true"
             android:launchMode="singleTop"

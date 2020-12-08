@@ -88,6 +88,15 @@ abstract class BaseActivity : AppCompatActivity() {
         Log.d(this::class.java.canonicalName, "end add fragment")
     }
 
+    protected fun setFragment(fragment: Fragment) {
+        val ft = supportFragmentManager.beginTransaction()
+        ft.replace(R.id.main_container, fragment)
+        ft.addToBackStack(null)
+        ft.setCustomAnimations(
+                android.R.animator.fade_in, android.R.animator.fade_out)
+        ft.commit()
+    }
+  
     private fun initHomeButton() {
         this.supportActionBar?.let {
             it.displayOptions = ActionBar.DISPLAY_HOME_AS_UP
