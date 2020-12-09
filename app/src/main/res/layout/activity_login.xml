@@ -83,7 +83,7 @@
 
     <TextView
         android:id="@+id/forgot_password_tv"
-        style="@style/TrainingJournalTheme.NoActionBar.TextShadow"
+        style="@style/TrainingJournalTheme.TextShadow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding_5"
@@ -110,7 +110,7 @@
 
     <TextView
         android:id="@+id/not_exist_acc_tv"
-        style="@style/TrainingJournalTheme.NoActionBar.TextShadow"
+        style="@style/TrainingJournalTheme.TextShadow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding_5"

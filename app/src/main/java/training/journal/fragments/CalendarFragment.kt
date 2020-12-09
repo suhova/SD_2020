@@ -19,5 +19,4 @@ class CalendarFragment : BaseFragment() {
     }
 
     override fun getFragmentLayoutId(): Int = R.layout.fragment_calendar
-
 }

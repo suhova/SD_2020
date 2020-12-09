@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/preference_personal_data_category">
+        <PreferenceScreen
+            android:key="@string/account_settings_key"
+            android:summary="@string/preference_account_settings_summary"
+            android:title="@string/preference_account_settings">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetClass="training.journal.activities.settings.AccountSettingsActivity"
+                android:targetPackage="@string/package_path" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+    <SwitchPreference
+        android:defaultValue="@bool/notifications_default"
+        android:key="@string/notifications_settings_key"
+        android:summaryOff="@string/disabled"
+        android:summaryOn="@string/enabled"
+        android:title="@string/preference_notification" />
+
+    <Preference
+        android:icon="@drawable/ic_info"
+        android:key="@string/say_error_settings_key"
+        android:summary="@string/preference_say_error_summary"
+        android:title="@string/preference_say_error" />
+
+    <Preference
+        android:icon="@drawable/ic_trash"
+        android:key="@string/delete_acc_settings_key"
+        android:summary="@string/preference_delete_account_summary"
+        android:title="@string/preference_delete_account" />
+
+    <Preference
+        android:key="@string/exit_settings_key"
+        android:summary="@string/preference_exit_summary"
+        android:title="@string/preference_exit" />
+</androidx.preference.PreferenceScreen>
