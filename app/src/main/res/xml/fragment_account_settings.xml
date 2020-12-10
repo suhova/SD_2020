@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="@string/last_name_settings_key"
+        android:title="@string/preference_edit_last_name" />
+    <EditTextPreference
+        android:key="@string/first_name_settings_key"
+        android:title="@string/preference_edit_first_name" />
+    <EditTextPreference
+        android:key="@string/father_name_settings_key"
+        android:title="@string/preference_edit_farther_name" />
+    <Preference
+        android:key="@string/change_avatar_settings_key"
+        android:title="@string/preference_change_avatar" />
+</PreferenceScreen>

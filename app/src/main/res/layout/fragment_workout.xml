@@ -1,108 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <TextView
-        android:id="@+id/title"
-        android:textSize="@dimen/dim_35sp"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/workout"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/workout_name"
-        app:layout_constraintVertical_weight="10"
-        />
+    android:padding="@dimen/dimens_8dp">
 
     <EditText
         android:id="@+id/workout_name"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:inputType="text"
         style="@style/Input"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        app:layout_constraintBottom_toTopOf="@id/add_exercise_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimens_16dp"
         android:hint="@string/enter_workout_name"
-        app:layout_constraintVertical_weight="10"
-        />
+        android:inputType="text"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/add_exercise_text"
-        android:text="@string/exercise_elements"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
         style="@style/TextViewExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/workout_name"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/exercise_elements"
+        android:textSize="@dimen/text_size_25"
+        app:layout_constraintBottom_toBottomOf="@id/add_exercise_button"
         app:layout_constraintEnd_toStartOf="@id/add_exercise_button"
-        app:layout_constraintBottom_toTopOf="@id/elements_list"
-        app:layout_constraintHorizontal_weight="80"
-        app:layout_constraintVertical_weight="10"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/add_exercise_button" />
 
-    <ImageButton
+    <Button
         android:id="@+id/add_exercise_button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:src="@drawable/ic_add_black_24dp"
-        app:layout_constraintTop_toBottomOf="@id/workout_name"
-        app:layout_constraintBottom_toBottomOf="@id/add_exercise_text"
+        style="@style/RoundedCornerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimens_16dp"
+        android:paddingHorizontal="@dimen/dimens_8dp"
+        android:text="@string/action_add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/add_exercise_text"
-        app:layout_constraintDimensionRatio="1"
-        app:layout_constraintHorizontal_weight="20"
-        app:layout_constraintVertical_weight="10"
-        />
+        app:layout_constraintTop_toBottomOf="@id/workout_name" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/elements_list"
+    <Button
+        android:id="@+id/save"
+        style="@style/RoundedCornerButton"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/dimens_8dp"
+        android:layout_marginTop="@dimen/dimens_16dp"
+        android:layout_marginBottom="@dimen/dimens_8dp"
+        android:text="@string/save"
+        app:layout_constraintEnd_toStartOf="@id/cancel"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_exercise_text"
-        app:layout_constraintBottom_toTopOf="@id/cancel"
-        app:layout_constraintVertical_weight="40"
-        />
+        app:layout_constraintTop_toBottomOf="@id/add_exercise_button" />
 
     <Button
         android:id="@+id/cancel"
+        style="@style/RoundedCornerButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/dimens_8dp"
+        android:layout_marginTop="@dimen/dimens_16dp"
+        android:layout_marginBottom="@dimen/dimens_8dp"
         android:text="@string/cancel"
-        android:layout_height="0dp"
-        android:layout_width="0dp"
-        style="@style/TextViewExercise"
-        android:layout_gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/save"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/elements_list"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintVertical_weight="10"
-        android:layout_margin="@dimen/dimens_8dp"
-        />
-    <Button
-        android:id="@+id/save"
-        android:text="@string/save"
-        android:layout_height="0dp"
-        android:layout_width="0dp"
-        style="@style/TextViewExercise"
-        android:layout_gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/elements_list"
-        app:layout_constraintStart_toEndOf="@id/cancel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintVertical_weight="10"
-        android:layout_margin="@dimen/dimens_8dp"
-        />
+        app:layout_constraintStart_toEndOf="@id/save"
+        app:layout_constraintTop_toBottomOf="@id/add_exercise_button" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/shadow"
+        android:background="@drawable/shadow"
+        app:layout_constraintBottom_toTopOf="@id/elements_list"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/elements_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/dimens_16dp"
+        app:layout_constraintTop_toBottomOf="@id/save" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
