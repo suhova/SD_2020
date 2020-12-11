@@ -1,83 +1,166 @@
 package training.journal.activities
 
-import android.app.Activity
 import android.os.Bundle
-import android.view.View
-import android.view.inputmethod.InputMethodManager
-import com.mikepenz.iconics.typeface.FontAwesome
-import com.mikepenz.materialdrawer.Drawer
+import com.afollestad.materialdialogs.MaterialDialog
+import com.mikepenz.materialdrawer.holder.ImageHolder
+import com.mikepenz.materialdrawer.holder.StringHolder
 import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem
+import com.mikepenz.materialdrawer.model.interfaces.IProfile
+import com.mikepenz.materialdrawer.util.addItems
+import com.mikepenz.materialdrawer.widget.AccountHeaderView
+import kotlinx.android.synthetic.main.activity_base_fragment.*
 import training.journal.R
+import training.journal.controllers.DrawerController
+import training.journal.controllers.NavigationMenuController
+import training.journal.model.UserInfo
+import training.journal.navmenu.NavigationMenuListener
+import training.journal.repository.AuthRepository
+import training.journal.repository.CurrentUserRepository
 
-abstract class DrawerActivity : AppbarActivity() {
+abstract class DrawerActivity : BaseActivity() {
 
     companion object {
-        const val SEARCH_ITEM_ID = 1
-        const val BOOKMARKS_ITEM_ID = 2
-        const val FAVOURITE_ITEM_ID = 3
-        const val SETTINGS_ITEM_ID = 4
+        const val SEARCH_ITEM_ID = 1L
+        const val BOOKMARKS_ITEM_ID = 2L
+        const val FAVOURITE_ITEM_ID = 3L
+        const val SETTINGS_ITEM_ID = 4L
+        const val EXIT_ITEM_ID = 5L
     }
 
-    private val menuItemsArray = arrayOf(
-            PrimaryDrawerItem()
-                    .withName(R.string.drawer_item_search)
-                    .withIcon(R.drawable.ic_search)
-                    .withIdentifier(SEARCH_ITEM_ID),
-            PrimaryDrawerItem().withName(R.string.drawer_item_bookmarks)
-                    .withIcon(R.drawable.ic_bookmarks)
-                    .withIdentifier(BOOKMARKS_ITEM_ID),
-            PrimaryDrawerItem()
-                    .withName(R.string.drawer_item_favourites)
-                    .withIcon(FontAwesome.Icon.faw_star_half_empty)
-                    .withIdentifier(FAVOURITE_ITEM_ID),
-            DividerDrawerItem(),
-            SecondaryDrawerItem()
-                    .withName(R.string.drawer_item_settings)
-                    .withIcon(R.drawable.ic_settings)
-                    .withIdentifier(SETTINGS_ITEM_ID)
-    )
+    private val profile: IProfile = ProfileDrawerItem()
 
-    private var navMenu: Drawer.Result? = null
+    private var drawerController: NavigationMenuController? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        navMenu = Drawer()
-                .withActivity(this)
-                .withToolbar(toolbar)
-                .withActionBarDrawerToggle(true)
-                .withHeader(R.layout.drawer_header_nav_menu)
-                .withOnDrawerListener(object : Drawer.OnDrawerListener {
-                    override fun onDrawerOpened(drawerView: View?) {
-                        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-                        inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        drawerController = DrawerController(root_drawer, slider)
+        setupItems()
+        slider.apply {
+            onDrawerItemClickListener = { _, item, _ ->
+                when (item.identifier) {
+                    SEARCH_ITEM_ID -> {
                     }
-
-                    override fun onDrawerClosed(drawerView: View?) {
-                        // do nothing
+                    BOOKMARKS_ITEM_ID -> {
                     }
-                })
-                .addDrawerItems(*menuItemsArray)
-                .build()
-        navMenu?.setOnDrawerItemClickListener { _, _, _, _, drawerItem ->
-            when (drawerItem.identifier) {
-                SEARCH_ITEM_ID -> {}
-                BOOKMARKS_ITEM_ID -> {}
-                FAVOURITE_ITEM_ID -> {}
-                SETTINGS_ITEM_ID -> router?.showSettingsPage()
+                    FAVOURITE_ITEM_ID -> {
+                    }
+                    EXIT_ITEM_ID -> { buildExitDialog() }
+                    SETTINGS_ITEM_ID -> router?.showSettingsPage()
+                }
+                closeNavMenu()
+                true
+            }
+        }
+        attachCurrentUserToSlider()
+    }
+
+    private fun buildExitDialog() {
+        MaterialDialog(this).show {
+            title(R.string.quit)
+            message(R.string.quit_confirm_msg)
+            positiveButton(R.string.preference_exit) {
+                AuthRepository.doOnLogout(this@DrawerActivity)
+            }
+            negativeButton(R.string.close) {
+                it.cancel()
             }
         }
     }
 
+    private fun setupItems() {
+        val searchItem = PrimaryDrawerItem().apply {
+            name = StringHolder(R.string.drawer_item_search)
+            icon = ImageHolder(R.drawable.ic_search)
+            identifier = SEARCH_ITEM_ID
+            isSelectable = false
+        }
+
+        val bookmarksItem = PrimaryDrawerItem().apply {
+            name = StringHolder(R.string.drawer_item_bookmarks)
+            icon = ImageHolder(R.drawable.ic_bookmarks)
+            identifier = BOOKMARKS_ITEM_ID
+            isSelectable = false
+        }
+
+        val favouritesItem = PrimaryDrawerItem().apply {
+            name = StringHolder(R.string.drawer_item_favourites)
+            // todo set icon later
+//        icon = ImageHolder()
+            identifier = FAVOURITE_ITEM_ID
+            isSelectable = false
+        }
+
+        val settingsItem = PrimaryDrawerItem().apply {
+            name = StringHolder(R.string.drawer_item_settings)
+            icon = ImageHolder(R.drawable.ic_settings)
+            identifier = SETTINGS_ITEM_ID
+            isSelectable = false
+        }
+
+        val exitItem = PrimaryDrawerItem().apply {
+            name = StringHolder(R.string.preference_exit)
+            identifier = EXIT_ITEM_ID
+            isSelectable = false
+        }
+
+        slider.addItems(
+            searchItem,
+            bookmarksItem,
+            favouritesItem,
+            DividerDrawerItem(),
+            settingsItem,
+            exitItem
+        )
+    }
+
     override fun onBackPressed() {
-        if (navMenu?.isDrawerOpen == true) {
-            navMenu?.closeDrawer()
+        if (root_drawer.isDrawerOpen(slider)) {
+            root_drawer.closeDrawer(slider)
         } else {
             super.onBackPressed()
         }
     }
 
-    override fun hasNavigationMenu() = true
+    fun openNavMenu() {
+        drawerController?.openMenu()
+    }
+
+    fun closeNavMenu() {
+        drawerController?.closeMenu()
+    }
+
+    fun addListener(listener: NavigationMenuListener) {
+        drawerController?.addMenuListener(listener)
+    }
+
+    fun removeListener(listener: NavigationMenuListener) {
+        drawerController?.removeMenuListener(listener)
+    }
+
+    private fun attachCurrentUserToSlider() {
+        val userInfo = CurrentUserRepository.getCurrentUserInfo()
+        when {
+            userInfo.pictureUrlStr != null -> profile.icon = ImageHolder(userInfo.pictureUrlStr)
+            userInfo.genderType == UserInfo.GenderType.MALE -> profile.icon = ImageHolder(getDrawable(R.drawable.male_stub))
+            userInfo.genderType == UserInfo.GenderType.FEMALE -> profile.icon = ImageHolder(getDrawable(R.drawable.female_stub))
+            else -> profile.icon = null
+        }
+        slider.accountHeader = AccountHeaderView(this).apply {
+            attachToSliderView(slider)
+            addProfiles(profile)
+            onAccountHeaderListener = { view, profile, current ->
+                false
+            }
+            selectionListEnabled = false
+            headerBackground = ImageHolder(R.drawable.header_nav_menu)
+            onAccountHeaderProfileImageListener = { _, _, _ ->
+                router?.showAccountSettingsPage()
+                true
+            }
+        }
+    }
+
+    protected open fun canOpenNavMenuFromToolbar(): Boolean = false
 }
