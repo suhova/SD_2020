@@ -4,8 +4,14 @@
     <string name="login_subtitle">Your favorite training plan is always with you</string>
     <string name="email">Email address</string>
     <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="last_name">Last name</string>
+    <string name="first_name">First name</string>
+    <string name="birthday"><u>Birthday</u></string>
     <string name="forgot_password"><u>Forgot your password?</u></string>
     <string name="login">Log in</string>
+    <string name="confirm">Confirm</string>
+    <string name="registration">Registration</string>
     <string name="not_exist_acc"><u>Don’t have an account?</u></string>
     <string name="add_workout">Add workout</string>
     <string name="action_add">Add element</string>
@@ -26,28 +32,6 @@
     <string name="enter_workout_name">Enter workout name</string>
     <string name="workout_exercises">Workout exercises</string>
 
-    <string-array name="exercise_types">
-        <item>Strength</item>
-        <item>Cardio</item>
-        <item>Coordinating</item>
-        <item>Musculoskeletal</item>
-    </string-array>
-
-    <string-array name="exercise_elements_units">
-        <item>mm</item>
-        <item>cm</item>
-        <item>inch</item>
-        <item>m</item>
-        <item>km</item>
-        <item>mile</item>
-    </string-array>
-
-    <string-array name="exercise_elements_input_type">
-        <item>target</item>
-        <item>result</item>
-        <item>stopwatch</item>
-        <item>timer</item>
-    </string-array>
     <string name="active_exercise_name">Exercise</string>
     <string name="parameter_goal_dummy">34</string>
     <string name="parameter_text_dummy">parameter1</string>
@@ -58,9 +42,26 @@
     <string name="drawer_item_favourites">Favourites</string>
     <string name="drawer_item_search">Found training</string>
 
+    <string name="remember">Remember</string>
     <string name="enabled">Enabled</string>
     <string name="disabled">Disabled</string>
     <string name="error">Error</string>
+    <string name="close">Close</string>
+    <string name="quit">Quit</string>
+    <string name="quit_confirm_msg">Do you really want to log out of your account?</string>
+    <string name="successfully">Successfully</string>
+    <string name="user_exist">User already exist</string>
+    <string name="failed_registr">Failed to register, please try again later.</string>
+    <string name="failed_login">Failed to log in, please try again later.</string>
+    <string name="incorrect_email">Incorrect email</string>
+    <string name="incorrect_password">Incorrect password</string>
+    <string name="incorrect_confirm_passowrd">Password don\'t match</string>
+    <string name="incorrect_last_name">Incorrect last name</string>
+    <string name="incorrect_first_name">Incorrect first name</string>
+    <string name="incorrect_email_or_password">Incorrect email or password.</string>
+    <string name="cannot_login">Failed to log in.</string>
+    <string name="cannot_sign_up">Failed to sign up.</string>
+    <string name="server_not_available">Server is not available.</string>
 
     <string name="preference_account_settings_summary">Account settings</string>
     <string name="preference_account_settings">Account</string>
@@ -89,4 +90,36 @@
     <string name="change_avatar_settings_key" translatable="false">father_name_settings_key</string>
 
     <string name="package_path" translatable="false">training.journal</string>
+
+
+    <string name="star_required" translatable="false">*</string>
+    <string name="star_required_text">* - required fields</string>
+
+    <string-array name="exercise_types">
+        <item>Strength</item>
+        <item>Cardio</item>
+        <item>Coordinating</item>
+        <item>Musculoskeletal</item>
+    </string-array>
+
+    <string-array name="exercise_elements_units">
+        <item>mm</item>
+        <item>cm</item>
+        <item>inch</item>
+        <item>m</item>
+        <item>km</item>
+        <item>mile</item>
+    </string-array>
+
+    <string-array name="exercise_elements_input_type">
+        <item>target</item>
+        <item>result</item>
+        <item>stopwatch</item>
+        <item>timer</item>
+    </string-array>
+
+    <string-array name="sign_up_user_gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 </resources>

@@ -28,4 +28,6 @@ abstract class BaseSettingsActivity : AppbarActivity() {
     override fun getActivityLayoutId(): Int = R.layout.activity_base_fragment
 
     abstract fun getPreferencesFragment(): PreferenceFragmentCompat
+
+    override fun canOpenNavMenuFromToolbar(): Boolean = false
 }
