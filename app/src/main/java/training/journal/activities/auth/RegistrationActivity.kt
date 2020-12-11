@@ -8,7 +8,7 @@ import retrofit2.Response
 import training.journal.R
 import training.journal.activities.BaseActivity
 import training.journal.api.Api
-import training.journal.api.responses.MessageResponse
+import training.journal.dto.UserDto
 import training.journal.model.UserSignUpInfo
 import training.journal.utils.auth.AuthorizationHelper
 import training.journal.utils.auth.SignUpDataCorrectType
@@ -62,7 +62,7 @@ class RegistrationActivity : BaseActivity() {
         }
     }
 
-    private fun onResponse(response: Response<MessageResponse>) {
+    private fun onResponse(response: Response<UserDto>) {
         when (response.code()) {
             HttpURLConnection.HTTP_CREATED -> {
                 ToastUtils.showShortToast(this, R.string.successfully)
@@ -72,13 +72,12 @@ class RegistrationActivity : BaseActivity() {
             HttpURLConnection.HTTP_BAD_REQUEST -> {
                 MaterialDialog(this).show {
                     title(R.string.cannot_sign_up)
-                    message(text = response.body()?.message
-                            ?: getString(R.string.user_exist))
+                    message(R.string.user_exist)
                     negativeButton(R.string.close) {
                         it.cancel()
                     }
                 }
-                Logger.d(this, "fail registration ${response.code()} : ${response.body()?.message}")
+                Logger.d(this, "fail registration ${response.code()}")
             }
             else -> {
                 ToastUtils.showShortToast(this, R.string.failed_registr)

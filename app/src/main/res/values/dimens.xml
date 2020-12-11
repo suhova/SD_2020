@@ -1,10 +1,14 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
 
+    <dimen name="padding_4">4dp</dimen>
     <dimen name="padding_5">5dp</dimen>
+    <dimen name="padding_8">8dp</dimen>
     <dimen name="padding_10">10dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
     <dimen name="padding_20">20dp</dimen>
     <dimen name="padding_40">40dp</dimen>
+    <dimen name="padding_48">48dp</dimen>
     <dimen name="padding_50">50dp</dimen>
     <dimen name="padding_60">60dp</dimen>
     <dimen name="padding_70">70dp</dimen>
@@ -29,4 +33,6 @@
     <dimen name="dim64">64dp</dimen>
 
     <dimen name="shadow">3dp</dimen>
+
+    <dimen name="header_icon_size">80dp</dimen>
 </resources>

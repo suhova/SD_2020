@@ -7,15 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import io.reactivex.Observable
-import kotlinx.android.synthetic.main.fragment_active_exercise.view.bookmark_border
-import kotlinx.android.synthetic.main.fragment_active_exercise.view.done_button
-import kotlinx.android.synthetic.main.fragment_active_exercise.view.go_back
-import kotlinx.android.synthetic.main.fragment_active_exercise.view.next_exercise_name
-import kotlinx.android.synthetic.main.fragment_active_exercise.view.star_border
 import kotlinx.android.synthetic.main.frgment_active_exercise.view.*
 import training.journal.R
-import training.journal.items.ExerciseItem
+import training.journal.items.Parameter
+import training.journal.items.ItemsList
 import training.journal.utils.recycler.adapters.BaseListAdapter
 import training.journal.viewholders.ActiveExerciseViewHolder
 
@@ -38,16 +33,16 @@ class ActiveExerciseFragment : BaseFragment() {
         doneButton = view.done_button
         nextExerciseButton = view.next_exercise_name
         doneButton?.setOnClickListener {
-            router?.showWorkoutPage()
+//            router?.showWorkoutPage()
         }
         nextExerciseButton?.setOnClickListener {
             router?.showActiveExercisePage()
         }
 
-        val parameters = Observable.just(listOf(
-                ExerciseItem("id1", "Title1", 5, 0, 0),
-                ExerciseItem("id2", "Title2", 5, 1, 1),
-                ExerciseItem("id3", "Title3", 5, 2, 2)
+        val parameters = ItemsList(mutableListOf(
+                Parameter("id1", "Title1", 5, 0, 0),
+                Parameter("id2", "Title2", 5, 1, 1),
+                Parameter("id3", "Title3", 5, 2, 2)
                 )
         )
 
@@ -61,5 +56,5 @@ class ActiveExerciseFragment : BaseFragment() {
         parametersList?.layoutManager = LinearLayoutManager(activity)
     }
 
-    override fun getFragmentLayoutId(): Int = R.layout.fragment_active_exercise
+    override fun getFragmentLayoutId(): Int = R.layout.frgment_active_exercise
 }

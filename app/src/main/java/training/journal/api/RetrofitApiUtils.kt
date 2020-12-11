@@ -10,7 +10,7 @@ import training.journal.BuildConfig
 object RetrofitApiUtils {
 
     // todo server url
-    private const val TRAINING_JOURNAL_URL = "http://localhost:8080"
+    private const val TRAINING_JOURNAL_URL = "http://178.79.189.130:8080"
 
     @JvmStatic
     fun createApi(): ApiInterface {

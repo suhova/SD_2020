@@ -6,8 +6,12 @@
     <string name="password">Пароль</string>
     <string name="confirm_password">Подтвердите пароль</string>
     <string name="forgot_password"><u>Забыли свой пароль?</u></string>
+    <string name="change_last_name">Изменить фамилию</string>
+    <string name="change_first_name">Изменить имя</string>
+    <string name="change_father_name">Изменить отчество</string>
     <string name="last_name">Фамилия</string>
     <string name="first_name">Имя</string>
+    <string name="father_name">Отчество</string>
     <string name="birthday"><u>День рождения</u></string>
     <string name="login">Войти</string>
     <string name="confirm">Подтвердить</string>
@@ -29,13 +33,14 @@
     <string name="workout">Тренировка</string>
     <string name="settings">Настройки</string>
     <string name="enter_workout_name">Введите название тренировки</string>
-    <string name="workout_exercises">Список упражнений</string>
     <string name="drawer_item_settings">Настройки</string>
     <string name="account_settings">Настройки аакаунта</string>
     <string name="drawer_item_bookmarks">Закладки</string>
     <string name="drawer_item_favourites">Избранное</string>
     <string name="drawer_item_search">Найти тренеровку</string>
 
+    <string name="image">Изображение</string>
+    <string name="change_imnage">Изменить ваше илчное изображение</string>
     <string name="remember">Запомнить</string>
     <string name="enabled">Включены</string>
     <string name="disabled">Выключены</string>
@@ -47,11 +52,13 @@
     <string name="user_exist">Пользователь уже существует</string>
     <string name="failed_registr">Не удалось зарегистрироваться, попробуйте ещё раз позже.</string>
     <string name="failed_login">Не удалось войти, попробуйте ещё раз позже.</string>
+    <string name="failed_change_user_data">Не удалось изменить данные, попробуйте ещё раз позже.</string>
     <string name="incorrect_email">Некорректный адрес эл.почты</string>
     <string name="incorrect_password">Некорректный пароль</string>
     <string name="incorrect_confirm_passowrd">Пароли не совпадают</string>
     <string name="incorrect_last_name">Некорректная фамилия</string>
     <string name="incorrect_first_name">Некорректное имя</string>
+    <string name="incorrect_father_name">Некорректное отчество</string>
     <string name="incorrect_email_or_password">Неправильная эл. почта или пароль.</string>
     <string name="cannot_login">Не удалось войти.</string>
     <string name="cannot_sign_up">Не удалось зарегистрироваться.</string>
@@ -78,6 +85,16 @@
     <string name="button_text_dummy">подход 1/1</string>
     <string name="next_exercise_dummy">следующее упражнение</string>
     <string name="star_required_text">* - Обязательные поля</string>
+    <string name="scheduled_workouts">Запланированные тренировки</string>
+    <string name="choose_time">Выберите время</string>
+    <string name="exercises_list">Список упражнений</string>
+    <string name="day1">Пн</string>
+    <string name="day2">Вт</string>
+    <string name="day3">Ср</string>
+    <string name="day4">Чт</string>
+    <string name="day5">Пт</string>
+    <string name="day6">Сб</string>
+    <string name="day7">Вс</string>
     <string name="start_training_button_text">Начать тренировку</string>
 
     <string-array name="exercise_types">

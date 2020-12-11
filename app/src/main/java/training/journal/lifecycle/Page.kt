@@ -10,6 +10,7 @@ import training.journal.fragments.CalendarFragment
 import training.journal.fragments.ExerciseFragment
 import training.journal.fragments.TrainingViewFragment
 import training.journal.fragments.WorkoutFragment
+import training.journal.fragments.settings.AccountSettingsFragment
 import java.io.Serializable
 import kotlin.reflect.KClass
 
@@ -40,6 +41,10 @@ sealed class Page : Serializable {
 
         abstract val clazz: KClass<out BaseFragment>
 
+        object AccountSettings : Fragment() {
+            override val clazz = AccountSettingsFragment::class
+        }
+
         object ActiveExercise : Fragment() {
             override val clazz = ActiveExerciseFragment::class
         }
@@ -62,6 +67,8 @@ sealed class Page : Serializable {
     }
 
     companion object {
-        val PAGE_KEY = "PAGE"
+        const val PAGE_KEY = "PAGE"
+        const val WORKOUT_ID_KEY = "WORKOUT_ID"
+        const val EXERCISE_ID_KEY = "EXERCISE_ID"
     }
 }

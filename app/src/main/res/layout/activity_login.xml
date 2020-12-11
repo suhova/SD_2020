@@ -16,7 +16,7 @@
         style="@style/TextAppearance.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/padding_40"
+        android:layout_marginStart="@dimen/padding_40"
         android:layout_marginBottom="@dimen/padding_40"
         android:text="@string/login_title"
         android:textSize="@dimen/text_size_36"
@@ -28,7 +28,7 @@
         style="@style/TextAppearance.Default"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/padding_40"
+        android:layout_marginEnd="@dimen/padding_40"
         android:text="@string/login_subtitle"
         android:textSize="@dimen/text_size_14"
         app:layout_constraintBottom_toBottomOf="@id/login_title_tv"
@@ -39,7 +39,7 @@
         android:id="@+id/input_layout_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/white_85"
         android:textColorHint="@color/gray_3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/login_title_tv"
@@ -58,7 +58,7 @@
         android:id="@+id/divider"
         android:layout_width="0dp"
         android:layout_height="@dimen/divider_height"
-        android:background="@color/gray_3"
+
         app:layout_constraintLeft_toLeftOf="@id/input_layout_email"
         app:layout_constraintRight_toRightOf="@id/input_layout_email"
         app:layout_constraintTop_toBottomOf="@id/input_layout_email" />
@@ -68,7 +68,7 @@
         style="@style/InputPasswordHint"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="#D9FFFFFF"
         app:layout_constraintLeft_toLeftOf="@id/login_title_tv"
         app:layout_constraintRight_toRightOf="@id/login_subtitle_tv"
         app:layout_constraintTop_toBottomOf="@id/divider">
@@ -89,11 +89,12 @@
         app:layout_constraintTop_toBottomOf="@id/input_layout_password" />
 
     <TextView
+        android:id="@+id/remember_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/remember"
         android:textAlignment="textEnd"
-        android:textColor="@color/black"
+        android:textColor="#37554D"
         android:textSize="@dimen/text_size_18"
         app:layout_constraintBottom_toBottomOf="@id/remember_checkbox"
         app:layout_constraintLeft_toRightOf="@id/remember_checkbox"

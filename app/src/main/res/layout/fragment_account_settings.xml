@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/user_image_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_16">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/user_image"
+            android:layout_width="@dimen/padding_48"
+            android:layout_height="@dimen/padding_48"
+            app:actualImageScaleType="centerCrop"
+            app:roundAsCircle="true" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_24dp"
+            android:layout_marginTop="@dimen/padding_4">
+
+            <TextView
+                android:id="@+id/image_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="@integer/integer_1"
+                android:singleLine="true"
+                android:text="@string/image"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14" />
+
+            <TextView
+                android:id="@+id/image_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image_header"
+                android:ellipsize="end"
+                android:maxLines="@integer/integer_1"
+                android:singleLine="true"
+                android:text="@string/change_imnage"
+                android:textColor="@color/gray_3"
+                android:textSize="@dimen/text_size_14" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#1F000000" />
+
+    <LinearLayout
+        android:id="@+id/last_name_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_16">
+
+        <TextView
+            android:id="@+id/last_name_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_72dp"
+            android:ellipsize="end"
+            android:maxLines="@integer/integer_1"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14"
+            tools:text="@string/last_name" />
+
+        <TextView
+            android:id="@+id/last_name_summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_72dp"
+            android:ellipsize="end"
+            android:maxLines="@integer/integer_1"
+            android:singleLine="true"
+            android:text="@string/change_last_name"
+            android:textColor="@color/gray_3"
+            android:textSize="@dimen/text_size_14" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#1F000000" />
+
+    <LinearLayout
+        android:id="@+id/first_name_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_16">
+
+        <TextView
+            android:id="@+id/first_name_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_72dp"
+            android:ellipsize="end"
+            android:maxLines="@integer/integer_1"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14"
+            tools:text="@string/last_name" />
+
+        <TextView
+            android:id="@+id/first_name_summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_72dp"
+            android:ellipsize="end"
+            android:maxLines="@integer/integer_1"
+            android:singleLine="true"
+            android:text="@string/change_last_name"
+            android:textColor="@color/gray_3"
+            android:textSize="@dimen/text_size_14" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#1F000000" />
+
+    <LinearLayout
+        android:id="@+id/father_name_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_16">
+
+        <TextView
+            android:id="@+id/father_name_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_72dp"
+            android:ellipsize="end"
+            android:maxLines="@integer/integer_1"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14"
+            tools:text="@string/father_name" />
+
+        <TextView
+            android:id="@+id/father_name_summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_72dp"
+            android:ellipsize="end"
+            android:maxLines="@integer/integer_1"
+            android:singleLine="true"
+            android:text="@string/change_father_name"
+            android:textColor="@color/gray_3"
+            android:textSize="@dimen/text_size_14" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#1F000000" />
+</LinearLayout>

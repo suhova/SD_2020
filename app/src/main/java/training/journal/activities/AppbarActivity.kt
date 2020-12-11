@@ -25,8 +25,8 @@ abstract class AppbarActivity : DrawerActivity() {
             it.setDisplayShowTitleEnabled(true)
             it.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.blue)))
             it.setHomeAsUpIndicator(
-                if (canOpenNavMenuFromToolbar()) R.drawable.ic_gamburger_menu
-                else R.drawable.ic_home_button
+                    if (canOpenNavMenuFromToolbar()) R.drawable.ic_gamburger_menu
+                    else R.drawable.ic_home_button
             )
         }
     }

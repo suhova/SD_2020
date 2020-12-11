@@ -6,8 +6,10 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Headers
+import retrofit2.http.PATCH
 import retrofit2.http.POST
-import training.journal.api.responses.MessageResponse
+import retrofit2.http.Path
+import training.journal.dto.UserDto
 import training.journal.dto.UserSignUpDto
 
 /**
@@ -22,8 +24,15 @@ interface ApiInterface {
 
     @Headers("Content-Type: application/json")
     @POST("/users/create")
-    fun createUserRequest(@Body userSignUpDto: UserSignUpDto): Single<Response<MessageResponse>>
+    fun createUserRequest(@Body userSignUpDto: UserSignUpDto): Single<Response<UserDto>>
 
     @GET("/users/login")
-    fun loginRequest(@Header("Authorization") token: String): Single<Response<MessageResponse>>
+    fun loginRequest(@Header("Authorization") token: String): Single<Response<UserDto>>
+
+    @PATCH("/users/{id}")
+    fun changeUserData(
+        @Path("id") id: Long,
+        @Header("Authorization") token: String,
+        @Body nameDto: Any
+    ): Single<Response<UserDto>>
 }
