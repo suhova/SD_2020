@@ -14,16 +14,10 @@
     <string name="registration">Регистрация</string>
     <string name="not_exist_acc"><u>Нет учётной записи?</u></string>
     <string name="add_workout">Добавить тренировку</string>
-    <string name="active_exercise_name">Упражнение</string>
-    <string name="parameter_goal_dummy">34</string>
-    <string name="parameter_text_dummy">Параметр1</string>
-    <string name="button_text_dummy">Подход 1/1</string>
-    <string name="next_exercise_dummy">Следующее упражнение</string>
-    <string name="share_exercise_template">Поделиться шаблоном упражнения</string>
+    <string name="action_add">Добавить</string>
     <string name="add_to_bookmarks">Добавить в закладки</string>
     <string name="exercise_type">Тип упражнения</string>
 
-    <string name="remember">Запомнить</string>
     <string name="choose_exercise_type">Выберите тип упражнения</string>
     <string name="enter_exercise_name">Введите имя упражнения</string>
     <string name="cancel">Отмена</string>
@@ -33,13 +27,19 @@
     <string name="parameter_name">Имя параметра</string>
     <string name="value">Значение</string>
     <string name="workout">Тренировка</string>
+    <string name="settings">Настройки</string>
     <string name="enter_workout_name">Введите название тренировки</string>
     <string name="workout_exercises">Список упражнений</string>
     <string name="drawer_item_settings">Настройки</string>
+    <string name="account_settings">Настройки аакаунта</string>
     <string name="drawer_item_bookmarks">Закладки</string>
     <string name="drawer_item_favourites">Избранное</string>
-    <string name="drawer_item_found">Найти тренеровку</string>
+    <string name="drawer_item_search">Найти тренеровку</string>
 
+    <string name="remember">Запомнить</string>
+    <string name="enabled">Включены</string>
+    <string name="disabled">Выключены</string>
+    <string name="error">Ошибка</string>
     <string name="close">Закрыть</string>
     <string name="quit">Выход</string>
     <string name="quit_confirm_msg">Вы действительно хотите выйти из аккаунта?</string>
@@ -57,8 +57,28 @@
     <string name="cannot_sign_up">Не удалось зарегистрироваться.</string>
     <string name="server_not_available">Сервер недоступен.</string>
 
-
+    <string name="preference_account_settings">Аккаунт</string>
+    <string name="preference_account_settings_summary">Настройки аккаунта</string>
+    <string name="preference_notification">Уведомления</string>
+    <string name="preference_delete_account">Удалить аккаунт</string>
+    <string name="preference_delete_account_summary">Этот аккаунт будет удалён безвозвратно</string>
+    <string name="preference_exit">Выйти</string>
+    <string name="preference_exit_summary">Выйти из этого аккаунта</string>
+    <string name="preference_say_error">Сообщить об ошибке</string>
+    <string name="preference_say_error_summary">Пожалуйста, сообщите нам об ошибке</string>
+    <string name="preference_edit_first_name">Имя</string>
+    <string name="preference_edit_last_name">Фамилия</string>
+    <string name="preference_edit_farther_name">Отчество</string>
+    <string name="preference_change_avatar">Фото</string>
+    <string name="preference_change_avatar_summary">Сменить фотографию</string>
+    <string name="preference_personal_data_category">Личные данные</string>
+    <string name="active_exercise_name">Упражнение</string>
+    <string name="parameter_goal_dummy">34</string>
+    <string name="parameter_text_dummy">параметр1</string>
+    <string name="button_text_dummy">подход 1/1</string>
+    <string name="next_exercise_dummy">следующее упражнение</string>
     <string name="star_required_text">* - Обязательные поля</string>
+    <string name="start_training_button_text">Начать тренировку</string>
 
     <string-array name="exercise_types">
         <item>Силовое</item>
