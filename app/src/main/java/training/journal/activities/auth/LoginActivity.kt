@@ -9,8 +9,9 @@ import training.journal.R
 import training.journal.activities.BaseActivity
 import training.journal.api.Api
 import training.journal.api.ApiUtils
-import training.journal.api.responses.MessageResponse
+import training.journal.dto.UserDto
 import training.journal.repository.AuthRepository
+import training.journal.repository.CurrentUserRepository
 import training.journal.utils.logger.Logger
 import java.net.HttpURLConnection
 
@@ -18,6 +19,10 @@ class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        remember_tv.setOnClickListener {
+            remember_checkbox.isChecked = !remember_checkbox.isChecked
+        }
+
         not_exist_acc_tv.setOnClickListener {
             router?.showRegistrationPage()
         }
@@ -33,10 +38,11 @@ class LoginActivity : BaseActivity() {
         }
     }
 
-    private fun onResponse(response: Response<MessageResponse>, token: String) {
+    private fun onResponse(response: Response<UserDto>, token: String) {
         when (response.code()) {
             HttpURLConnection.HTTP_OK -> {
-                AuthRepository.doOnLogin(this, token, remember_checkbox.isChecked)
+                AuthRepository.doOnLogin(this, token, remember_checkbox.isChecked,
+                        response.body()?.toUserInfo() ?: CurrentUserRepository.CURRENT_USER_EMPTY)
                 Logger.d(this, "successfully login with code ${response.code()}")
             }
             HttpURLConnection.HTTP_UNAUTHORIZED -> {

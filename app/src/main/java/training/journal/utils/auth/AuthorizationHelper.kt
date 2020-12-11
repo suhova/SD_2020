@@ -27,7 +27,7 @@ object AuthorizationHelper {
         }
     }
 
-    private fun isCorrectName(name: String): Boolean = name.matches(Regex(NAME_PATTERN))
+    fun isCorrectName(name: String): Boolean = name.matches(Regex(NAME_PATTERN))
 
     private fun isCorrectPassword(password: String): Boolean = password.matches(Regex(PASSWORD_PATTERN))
 

@@ -12,14 +12,16 @@ import training.journal.utils.logger.Logger
 import kotlin.reflect.KClass
 import kotlin.reflect.full.createInstance
 
-class BaseFragmentActivity : AppbarActivity() {
+open class BaseFragmentActivity : AppbarActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val fragment = intent.getSerializableExtra(PAGE_KEY) as Page.Fragment
+        val fragment: Page.Fragment? = intent.getSerializableExtra(PAGE_KEY) as? Page.Fragment
 
-        setSupportingFragment(fragment.clazz)
+        fragment?.let {
+            setSupportingFragment(it.clazz)
+        }
     }
 
     private fun setSupportingFragment(clazz: KClass<out BaseFragment>) {
@@ -34,8 +36,17 @@ class BaseFragmentActivity : AppbarActivity() {
         ft.replace(R.id.main_container, fragment)
         ft.addToBackStack(null)
         ft.setCustomAnimations(
-            android.R.animator.fade_in, android.R.animator.fade_out)
+                android.R.animator.fade_in, android.R.animator.fade_out)
         ft.commit()
+    }
+
+    fun setPrevFragment() {
+        val fm = supportFragmentManager
+        if (fm.backStackEntryCount > 0) {
+            fm.popBackStack()
+        } else {
+            Logger.e(this, "Fragment stack is empty!")
+        }
     }
 
     override fun getActivityLayoutId() = R.layout.activity_base_fragment

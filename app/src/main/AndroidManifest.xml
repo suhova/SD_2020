@@ -16,27 +16,27 @@
         android:theme="@style/TrainingJournalTheme"
         tools:targetApi="n">
         <activity android:name=".activities.WelcomeActivity">
-                        <intent-filter>
-                            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-                            <category android:name="android.intent.category.LAUNCHER" />
-                        </intent-filter>
-                    </activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.auth.LoginActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activities.auth.RegistrationActivity"
             android:windowSoftInputMode="adjustPan" />
-            <activity
-                android:name=".activities.settings.SettingsActivity"
-                android:windowSoftInputMode="adjustPan" />
-            <activity
-                android:name=".activities.settings.AccountSettingsActivity"
-                android:windowSoftInputMode="adjustPan" />
-            <activity
-                android:name=".activities.BaseFragmentActivity"
-                android:windowSoftInputMode="adjustPan" />
-</application>
+        <activity
+            android:name=".activities.settings.SettingsActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activities.settings.AccountSettingsActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activities.BaseFragmentActivity"
+            android:windowSoftInputMode="adjustPan" />
+    </application>
 
 </manifest>

@@ -46,6 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/star_required"
+        android:textColor="@color/red"
         app:layout_constraintBottom_toBottomOf="@id/input_layout_email"
         app:layout_constraintRight_toLeftOf="@id/input_layout_email"
         app:layout_constraintTop_toTopOf="@id/input_layout_email" />
@@ -75,6 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/star_required"
+        android:textColor="@color/red"
         app:layout_constraintBottom_toBottomOf="@id/input_layout_password"
         app:layout_constraintRight_toLeftOf="@id/input_layout_password"
         app:layout_constraintTop_toTopOf="@id/input_layout_password" />
@@ -104,6 +106,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/star_required"
+        android:textColor="@color/red"
         app:layout_constraintBottom_toBottomOf="@id/input_layout_confirm_password"
         app:layout_constraintRight_toLeftOf="@id/input_layout_confirm_password"
         app:layout_constraintTop_toTopOf="@id/input_layout_confirm_password" />
@@ -134,6 +137,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/star_required"
+        android:textColor="@color/red"
         app:layout_constraintBottom_toBottomOf="@id/input_layout_last_name"
         app:layout_constraintRight_toLeftOf="@id/input_layout_last_name"
         app:layout_constraintTop_toTopOf="@id/input_layout_last_name" />
@@ -163,6 +167,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/star_required"
+        android:textColor="@color/red"
         app:layout_constraintBottom_toBottomOf="@id/input_layout_first_name"
         app:layout_constraintRight_toLeftOf="@id/input_layout_first_name"
         app:layout_constraintTop_toTopOf="@id/input_layout_first_name" />
@@ -189,13 +194,23 @@
         app:layout_constraintTop_toTopOf="@id/user_gender" />
 
     <TextView
+        android:id="@+id/star_required_filed_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:text="* "
+        android:textSize="@dimen/text_size_15"
+        app:layout_constraintBottom_toTopOf="@id/confirm_button"
+        app:layout_constraintLeft_toLeftOf="@id/input_layout_last_name"
+        app:layout_constraintTop_toBottomOf="@id/input_layout_last_name" />
+    <TextView
         android:id="@+id/required_filed_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/star_required_text"
         android:textSize="@dimen/text_size_15"
         app:layout_constraintBottom_toTopOf="@id/confirm_button"
-        app:layout_constraintLeft_toLeftOf="@id/input_layout_last_name"
+        app:layout_constraintLeft_toRightOf="@id/star_required_filed_tv"
         app:layout_constraintTop_toBottomOf="@id/input_layout_last_name" />
 
     <Button

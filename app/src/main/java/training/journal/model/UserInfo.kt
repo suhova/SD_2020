@@ -2,10 +2,12 @@ package training.journal.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import training.journal.dto.UserDto
 import java.util.Date
 
 data class UserInfo(
-    val uid: Long,
+    val id: Long,
+    val uid: String,
     val lastName: String,
     val firstName: String,
     val fatherName: String?,
@@ -31,6 +33,7 @@ data class UserInfo(
         parcel.readLong(),
         parcel.readString() ?: NAME_UNKNOWN,
         parcel.readString() ?: NAME_UNKNOWN,
+        parcel.readString() ?: NAME_UNKNOWN,
         parcel.readString(),
         parcel.readSerializable() as GenderType,
         parcel.readString() ?: NAME_UNKNOWN,
@@ -40,7 +43,8 @@ data class UserInfo(
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
         dest.apply {
-            writeLong(uid)
+            writeLong(id)
+            writeString(uid)
             writeString(lastName)
             writeString(firstName)
             writeString(fatherName)
@@ -52,6 +56,18 @@ data class UserInfo(
     }
 
     override fun describeContents(): Int = 0
+
+    fun toUserDto(): UserDto = UserDto(
+        id,
+        uid,
+        lastName,
+        firstName,
+        fatherName,
+        email,
+        birthday,
+        genderType.toApiStr(),
+        pictureUrlStr
+    )
 
     enum class GenderType {
         MALE,
@@ -72,7 +88,7 @@ data class UserInfo(
             const val FEMALE_API_NAME = "female"
             const val UNKNOWN_API_NAME = "unknown"
 
-            fun fromApiStr(gender: String): GenderType {
+            fun fromApiStr(gender: String?): GenderType {
                 return when (gender) {
                     MALE_API_NAME -> MALE
                     FEMALE_API_NAME -> FEMALE

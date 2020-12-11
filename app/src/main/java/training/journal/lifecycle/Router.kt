@@ -2,8 +2,11 @@ package training.journal.lifecycle
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Bundle
 import training.journal.activities.BaseFragmentActivity
+import training.journal.lifecycle.Page.Companion.EXERCISE_ID_KEY
 import training.journal.lifecycle.Page.Companion.PAGE_KEY
+import training.journal.lifecycle.Page.Companion.WORKOUT_ID_KEY
 import training.journal.utils.logger.Logger
 import kotlin.reflect.full.createInstance
 
@@ -17,8 +20,10 @@ class Router(private val activity: Activity) {
         showPage(Page.Fragment.Calendar)
     }
 
-    fun showWorkoutPage() {
-        showPage(Page.Fragment.Workout)
+    fun showWorkoutPage(workoutId: Long) {
+        val workoutIdBundle = Bundle(1)
+        workoutIdBundle.putLong(WORKOUT_ID_KEY, workoutId)
+        showPage(Page.Fragment.Workout, workoutIdBundle)
     }
 
     fun showTrainingViewPage() {
@@ -29,8 +34,10 @@ class Router(private val activity: Activity) {
         showPage(Page.Fragment.ActiveExercise)
     }
 
-    fun showExercisePage() {
-        showPage(Page.Fragment.Exercise)
+    fun showExercisePage(exerciseId: Long) {
+        val exerciseIdBundle = Bundle(1)
+        exerciseIdBundle.putLong(EXERCISE_ID_KEY, exerciseId)
+        showPage(Page.Fragment.Exercise, exerciseIdBundle)
     }
 
     fun showSettingsPage() {
@@ -41,36 +48,47 @@ class Router(private val activity: Activity) {
         showPage(Page.Activity.AccountSettings)
     }
 
+    fun showAccountSettingsSubPage() {
+        showPage(Page.Fragment.AccountSettings)
+    }
+
     fun showRegistrationPage() {
         showPage(Page.Activity.Registration)
     }
 
-    private fun showPage(page: Page) {
+    private fun showPage(page: Page, bundle: Bundle? = null) {
         Logger.d(this, "showPage $page")
         when (page) {
-            is Page.Activity -> showActivity(page)
+            is Page.Activity -> showActivity(page, bundle)
             is Page.Fragment -> {
                 if (activity is BaseFragmentActivity) {
-                    replaceFragment(page)
+                    replaceFragment(page, bundle)
                 } else {
-                    showActivityWithFragment(page)
+                    showActivityWithFragment(page, bundle)
                 }
             }
         }
     }
 
-    private fun showActivity(page: Page.Activity) {
+    private fun showActivity(page: Page.Activity, bundle: Bundle?) {
         val intent = Intent(activity, page.clazz.java)
+        bundle?.let { intent.putExtras(it) }
         activity.startActivity(intent)
     }
 
-    private fun showActivityWithFragment(page: Page.Fragment) {
+    private fun showActivityWithFragment(page: Page.Fragment, bundle: Bundle?) {
         val intent = Intent(activity, BaseFragmentActivity::class.java)
         intent.putExtra(PAGE_KEY, page)
+        bundle?.let { intent.putExtras(it) }
         activity.startActivity(intent)
     }
 
-    private fun replaceFragment(page: Page.Fragment) {
+    private fun replaceFragment(page: Page.Fragment, bundle: Bundle?) {
+        bundle?.let { activity.intent.putExtras(it) }
         (activity as? BaseFragmentActivity)?.setFragment(page.clazz.createInstance())
+    }
+
+    fun goToPrevFragment() {
+        (activity as? BaseFragmentActivity)?.setPrevFragment()
     }
 }

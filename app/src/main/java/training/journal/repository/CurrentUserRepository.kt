@@ -1,11 +1,14 @@
 package training.journal.repository
 
+import android.content.Context
+import androidx.lifecycle.MutableLiveData
 import training.journal.model.UserInfo
 
 object CurrentUserRepository {
 
-    private val currentUser: UserInfo = UserInfo(
-            uid = 0,
+    val CURRENT_USER_EMPTY: UserInfo = UserInfo(
+            id = -1,
+            uid = "-1",
             lastName = "lastName",
             firstName = "firstName",
             fatherName = "fatherName",
@@ -14,6 +17,10 @@ object CurrentUserRepository {
             birthday = null,
             pictureUrlStr = null)
 
-    @JvmStatic
-    fun getCurrentUserInfo(): UserInfo = currentUser
+    var currentUser: MutableLiveData<UserInfo> = MutableLiveData()
+        internal set
+
+    fun getCurrentUserToken(context: Context): String? =
+            context.getSharedPreferences(AuthRepository.TRAINING_PREFERENCE, Context.MODE_PRIVATE)
+                    .getString(AuthRepository.USER_TOKEN, null)
 }
