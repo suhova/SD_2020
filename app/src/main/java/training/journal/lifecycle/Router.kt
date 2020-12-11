@@ -21,6 +21,10 @@ class Router(private val activity: Activity) {
         showPage(Page.Fragment.Workout)
     }
 
+    fun showTrainingViewPage() {
+        showPage(Page.Fragment.TrainingView)
+    }
+
     fun showActiveExercisePage() {
         showPage(Page.Fragment.ActiveExercise)
     }
