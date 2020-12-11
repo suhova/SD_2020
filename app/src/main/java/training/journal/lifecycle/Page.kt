@@ -1,6 +1,8 @@
 package training.journal.lifecycle
 
-import training.journal.activities.LoginActivity
+import training.journal.activities.auth.LoginActivity
+import training.journal.activities.auth.RegistrationActivity
+import training.journal.activities.settings.AccountSettingsActivity
 import training.journal.activities.settings.SettingsActivity
 import training.journal.fragments.ActiveExerciseFragment
 import training.journal.fragments.BaseFragment
@@ -22,6 +24,14 @@ sealed class Page : Serializable {
 
         object Settings : Activity() {
             override val clazz = SettingsActivity::class
+        }
+
+        object AccountSettings : Activity() {
+            override val clazz = AccountSettingsActivity::class
+        }
+
+        object Registration : Activity() {
+            override val clazz = RegistrationActivity::class
         }
     }
 

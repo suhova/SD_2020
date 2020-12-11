@@ -7,7 +7,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import training.journal.R
 
-abstract class AppbarActivity : BaseActivity() {
+abstract class AppbarActivity : DrawerActivity() {
 
     protected var toolbar: Toolbar? = null
 
@@ -24,16 +24,21 @@ abstract class AppbarActivity : BaseActivity() {
             it.setDisplayShowHomeEnabled(true)
             it.setDisplayShowTitleEnabled(true)
             it.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.blue)))
-            if (!hasNavigationMenu()) {
-                it.setHomeAsUpIndicator(R.drawable.ic_home_button)
-            }
+            it.setHomeAsUpIndicator(
+                if (canOpenNavMenuFromToolbar()) R.drawable.ic_gamburger_menu
+                else R.drawable.ic_home_button
+            )
         }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-                finish()
+                if (canOpenNavMenuFromToolbar()) {
+                    openNavMenu()
+                } else {
+                    finish()
+                }
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -44,5 +49,5 @@ abstract class AppbarActivity : BaseActivity() {
 
     protected open fun getToolbarTitle(): String = getString(R.string.app_name)
 
-    protected open fun hasNavigationMenu(): Boolean = false
+    override fun canOpenNavMenuFromToolbar(): Boolean = true
 }
