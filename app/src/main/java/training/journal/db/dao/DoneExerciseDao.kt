@@ -14,6 +14,9 @@ interface DoneExerciseDao {
     @Query("SELECT * FROM DoneExerciseEntity")
     fun getAll(): List<DoneExerciseEntity>
 
+    @Query("SELECT * FROM DoneExerciseEntity WHERE userId=:userId")
+    fun getAllByUser(userId: Long): List<DoneExerciseEntity>
+
     @Query("SELECT * FROM DoneExerciseEntity WHERE id = :id")
     fun getById(id: Long): DoneExerciseEntity
 

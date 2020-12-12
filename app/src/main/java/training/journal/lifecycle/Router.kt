@@ -44,6 +44,10 @@ class Router(private val activity: Activity) {
         showPage(Page.Fragment.Exercise, exerciseIdBundle)
     }
 
+    fun showResultsPage() {
+        showPage(Page.Fragment.Results)
+    }
+
     fun showSettingsPage() {
         showPage(Page.Activity.Settings)
     }

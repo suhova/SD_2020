@@ -102,13 +102,18 @@ class ActiveExerciseFragment : BaseFragment() {
             )
             doneExercise.id = database?.doneExerciseDao()?.insert(doneExercise)!!
             for (parameterModel in elements.items) {
+                val paramTypeId = parameterModel.parameter.parameterTypeId
+                val isFilledWorkout = parameterModel.parameterTypeChoices[paramTypeId.toInt() - 1].onCreateFilling
+                if (isFilledWorkout) {
+                    continue
+                }
                 val resultEntity = ParameterResultEntity(
                         doneExercise.id,
                         parameterModel.parameter.id,
                         parameterModel.parameter.value
                 )
                 println("saving parameter: " + resultEntity.parameterId + " => " + resultEntity.value)
-                database?.parameterResultDao()?.insert(resultEntity)
+                resultEntity.id = database?.parameterResultDao()?.insert(resultEntity)!!
             }
             withContext(Dispatchers.Main) {
                 loadNextExercise()

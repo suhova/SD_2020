@@ -8,6 +8,7 @@ import training.journal.fragments.ActiveExerciseFragment
 import training.journal.fragments.BaseFragment
 import training.journal.fragments.CalendarFragment
 import training.journal.fragments.ExerciseFragment
+import training.journal.fragments.ResultsFragment
 import training.journal.fragments.TrainingViewFragment
 import training.journal.fragments.WorkoutFragment
 import training.journal.fragments.settings.AccountSettingsFragment
@@ -43,6 +44,10 @@ sealed class Page : Serializable {
 
         object AccountSettings : Fragment() {
             override val clazz = AccountSettingsFragment::class
+        }
+
+        object Results : Fragment() {
+            override val clazz = ResultsFragment::class
         }
 
         object ActiveExercise : Fragment() {

@@ -37,7 +37,7 @@
     <string name="account_settings">Настройки аакаунта</string>
     <string name="drawer_item_bookmarks">Закладки</string>
     <string name="drawer_item_favourites">Избранное</string>
-    <string name="drawer_item_search">Найти тренеровку</string>
+    <string name="drawer_item_search">Найти тренировку</string>
 
     <string name="image">Изображение</string>
     <string name="change_imnage">Изменить ваше илчное изображение</string>
@@ -100,6 +100,9 @@
     <string name="workout_progress">Прогресс тренировки</string>
     <string name="create_new">Создать</string>
     <string name="default_workout_name">Тренировка %d</string>
+    <string name="drawer_item_results">Результаты</string>
+    <string name="choose_the_exercise">Выберите упражнение</string>
+    <string name="results">Результаты</string>
 
     <string-array name="exercise_types">
         <item>Силовое</item>
@@ -128,4 +131,5 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+    <string name="drawer_item_calendar">Календарь тренировок</string>
 </resources>
