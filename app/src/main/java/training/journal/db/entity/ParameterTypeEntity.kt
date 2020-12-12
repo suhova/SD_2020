@@ -6,9 +6,10 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class ParameterTypeEntity(
-    @ColumnInfo var name: String,
-    @ColumnInfo var serverId: Long = -1,
-    @PrimaryKey(autoGenerate = true) var id: Long = 0
+        @ColumnInfo var name: String,
+        @ColumnInfo var onCreateFilling: Boolean,
+        @ColumnInfo var serverId: Long = -1,
+        @PrimaryKey(autoGenerate = true) var id: Long = 0
 ) {
     override fun toString(): String {
         return name

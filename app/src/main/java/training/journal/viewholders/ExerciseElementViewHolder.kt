@@ -15,7 +15,7 @@ import training.journal.db.entity.ParameterTypeEntity
 import training.journal.db.model.ParameterModel
 
 class ExerciseElementViewHolder(
-    itemView: View
+        itemView: View
 ) : BaseViewHolder<ParameterModel>(itemView) {
 
     private var title: EditText = itemView.title
@@ -28,14 +28,14 @@ class ExerciseElementViewHolder(
         title.setText(item.parameter.name)
         value.setText(item.parameter.value.toString())
         units.adapter = ArrayAdapter<MeasureUnitEntity>(
-            this.itemView.context,
-            R.layout.spinner_item,
-            item.measureUnitChoices
+                this.itemView.context,
+                R.layout.spinner_item,
+                item.measureUnitChoices
         )
         inputType.adapter = ArrayAdapter<ParameterTypeEntity>(
-            this.itemView.context,
-            R.layout.spinner_item,
-            item.parameterTypeChoices
+                this.itemView.context,
+                R.layout.spinner_item,
+                item.parameterTypeChoices
         )
         units.setSelection(item.parameter.measureUnitId.toInt() - 1)
         inputType.setSelection(item.parameter.parameterTypeId.toInt() - 1)
@@ -46,6 +46,7 @@ class ExerciseElementViewHolder(
                     item.parameter.name = s.toString()
                 }
             }
+
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
@@ -59,6 +60,7 @@ class ExerciseElementViewHolder(
                     }
                 }
             }
+
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
@@ -72,6 +74,7 @@ class ExerciseElementViewHolder(
             override fun onNothingSelected(parent: AdapterView<*>?) {}
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 item.parameter.parameterTypeId = position.toLong() + 1
+                value.isEnabled = item.parameterTypeChoices[position].onCreateFilling
             }
         }
     }
