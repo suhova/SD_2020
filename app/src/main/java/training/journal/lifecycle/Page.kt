@@ -1,6 +1,5 @@
 package training.journal.lifecycle
 
-import training.journal.activities.auth.LoginActivity
 import training.journal.activities.auth.RegistrationActivity
 import training.journal.activities.settings.AccountSettingsActivity
 import training.journal.activities.settings.SettingsActivity
@@ -12,6 +11,7 @@ import training.journal.fragments.ResultsFragment
 import training.journal.fragments.TrainingViewFragment
 import training.journal.fragments.WorkoutFragment
 import training.journal.fragments.settings.AccountSettingsFragment
+import training.journal.mock.auth.FakeLoginActivity
 import java.io.Serializable
 import kotlin.reflect.KClass
 
@@ -22,7 +22,7 @@ sealed class Page : Serializable {
         abstract val clazz: KClass<out android.app.Activity>
 
         object Login : Activity() {
-            override val clazz = LoginActivity::class
+            override val clazz = FakeLoginActivity::class
         }
 
         object Settings : Activity() {
