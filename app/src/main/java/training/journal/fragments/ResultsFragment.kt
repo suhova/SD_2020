@@ -18,7 +18,6 @@ import training.journal.db.entity.DoneExerciseEntity
 import training.journal.db.entity.ExerciseEntity
 import training.journal.db.entity.MeasureUnitEntity
 import training.journal.db.entity.ParameterResultEntity
-import training.journal.db.entity.ParameterTypeEntity
 import training.journal.db.model.ParameterResultModel
 import training.journal.items.ItemsList
 import training.journal.repository.CurrentUserRepository
@@ -35,7 +34,6 @@ class ResultsFragment : BaseFragment() {
     private var elements: ItemsList<ParameterResultModel> = ItemsList(mutableListOf())
 
     private var measureUnitChoices: MutableList<MeasureUnitEntity>? = null
-    private var parameterTypeChoices: MutableList<ParameterTypeEntity>? = null
 
     private var userId: Long? = null
 
@@ -46,10 +44,10 @@ class ResultsFragment : BaseFragment() {
         exerciseButton = exercise_button
 
         val activeExerciseAdapter = BaseListAdapter(
-                holderType = ResultViewHolder::class,
-                layoutId = R.layout.item_result,
-                dataSource = elements,
-                onClick = {}
+            holderType = ResultViewHolder::class,
+            layoutId = R.layout.item_result,
+            dataSource = elements,
+            onClick = {}
         )
         recyclerView?.adapter = activeExerciseAdapter
         recyclerView?.layoutManager = LinearLayoutManager(activity)
@@ -72,7 +70,6 @@ class ResultsFragment : BaseFragment() {
                     list!!.addAll(appDatabase.parameterResultDao().getAllByDoneExerciseId(doneExercise.id))
                 }
                 measureUnitChoices = appDatabase.measureUnitDao().getAll().toMutableList()
-                parameterTypeChoices = appDatabase.parameterTypeDao().getAll().toMutableList()
             }
             withContext(Dispatchers.Main) {
                 exerciseButton?.setOnClickListener {
@@ -99,15 +96,12 @@ class ResultsFragment : BaseFragment() {
         GlobalScope.launch(Dispatchers.IO) {
             val exercise = database?.exerciseDao()?.getById(exerciseId)!!
             val resultsList = map[exercise]
-            val parametersList = database?.exerciseParameterDao()?.getParametersForExercise(exerciseId)!!.filter {
-                it.parameterTypeId.toInt() == 2
-            }
+            val parametersList = database?.exerciseParameterDao()?.getParametersForExercise(exerciseId)!!
             val parameterModelList = parametersList.map {
                 ParameterResultModel(
-                        it,
-                        resultsList!!.filter { result -> result.parameterId == it.id }.toMutableList(),
-                        measureUnitChoices!!,
-                        parameterTypeChoices!!
+                    it,
+                    resultsList!!.filter { result -> result.parameterId == it.id }.toMutableList(),
+                    measureUnitChoices!!
                 )
             }.toMutableList()
             withContext(Dispatchers.Main) {

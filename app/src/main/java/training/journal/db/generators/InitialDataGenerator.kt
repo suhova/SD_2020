@@ -1,51 +1,44 @@
 package training.journal.db.generators
 
-import training.journal.db.entity.ExerciseEntity
+import android.content.Context
+import training.journal.R
 import training.journal.db.entity.ExerciseTypeEntity
 import training.journal.db.entity.MeasureUnitEntity
 import training.journal.db.entity.ParameterEntity
-import training.journal.db.entity.ParameterTypeEntity
 
-// TODO: load initial data from the server with current app locale
 class InitialDataGenerator {
     companion object {
-        fun getParameterTypes(): List<ParameterTypeEntity> {
+
+        fun getExerciseTypes(context: Context): List<ExerciseTypeEntity> {
             return listOf(
-                    ParameterTypeEntity("Цель", true),
-                    ParameterTypeEntity("Результат", false)
+                ExerciseTypeEntity(context.resources.getString(R.string.strength)),
+                ExerciseTypeEntity(context.resources.getString(R.string.dexterity)),
+                ExerciseTypeEntity(context.resources.getString(R.string.coordination)),
+                ExerciseTypeEntity(context.resources.getString(R.string.endurance)),
+                ExerciseTypeEntity(context.resources.getString(R.string.speed)),
+                ExerciseTypeEntity(context.resources.getString(R.string.flexibility)),
+                ExerciseTypeEntity(context.resources.getString(R.string.concentration)),
+                ExerciseTypeEntity(context.resources.getString(R.string.other_type))
             )
         }
-        fun getExerciseTypes(): List<ExerciseTypeEntity> {
+        fun getMeasureUnits(context: Context): List<MeasureUnitEntity> {
             return listOf(
-                    ExerciseTypeEntity("Силовое"),
-                    ExerciseTypeEntity("Кардио"),
-                    ExerciseTypeEntity("Координация"),
-                    ExerciseTypeEntity("Опорно-двигательное")
+                MeasureUnitEntity(context.resources.getString(R.string.mm)),
+                MeasureUnitEntity(context.resources.getString(R.string.sm)),
+                MeasureUnitEntity(context.resources.getString(R.string.m)),
+                MeasureUnitEntity(context.resources.getString(R.string.km)),
+                MeasureUnitEntity(context.resources.getString(R.string.ue)),
+                MeasureUnitEntity(context.resources.getString(R.string.sec)),
+                MeasureUnitEntity(context.resources.getString(R.string.min)),
+                MeasureUnitEntity(context.resources.getString(R.string.h)),
+                MeasureUnitEntity(context.resources.getString(R.string.kg))
             )
         }
-        fun getMeasureUnits(): List<MeasureUnitEntity> {
+        fun getParameters(context: Context): List<ParameterEntity> {
             return listOf(
-                    MeasureUnitEntity("Миллиметры", "мм"),
-                    MeasureUnitEntity("Сантиметры", "см"),
-                    MeasureUnitEntity("Метры", "м"),
-                    MeasureUnitEntity("Километры", "км"),
-                    MeasureUnitEntity("Единицы", "ед"),
-                    MeasureUnitEntity("Секунды", "сек"),
-                    MeasureUnitEntity("Минуты", "мин"),
-                    MeasureUnitEntity("Часы", "ч"),
-                    MeasureUnitEntity("Килограммы", "кг")
-            )
-        }
-        fun getParameters(): List<ParameterEntity> {
-            return listOf(
-                    ParameterEntity("Время (цель)", 6, 1),
-                    ParameterEntity("Время (результат)", 6, 2),
-                    ParameterEntity("Дистанция (цель)", 3, 1),
-                    ParameterEntity("Дистанция (результат)", 3, 2),
-                    ParameterEntity("Повторения (цель)", 5, 1),
-                    ParameterEntity("Повторения (результат)", 5, 2),
-                    ParameterEntity("Вес (цель)", 9, 1),
-                    ParameterEntity("Вес (результат)", 9, 2)
+                ParameterEntity(context.resources.getString(R.string.time), 6),
+                ParameterEntity(context.resources.getString(R.string.distance), 3),
+                ParameterEntity(context.resources.getString(R.string.weight), 9)
             )
         }
     }

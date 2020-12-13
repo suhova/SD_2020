@@ -25,7 +25,6 @@ import training.journal.db.entity.ExerciseParameterEntity
 import training.journal.db.entity.ExerciseTypeEntity
 import training.journal.db.entity.MeasureUnitEntity
 import training.journal.db.entity.ParameterEntity
-import training.journal.db.entity.ParameterTypeEntity
 import training.journal.db.model.ParameterModel
 import training.journal.items.ItemsList
 import training.journal.lifecycle.Page.Companion.EXERCISE_ID_KEY
@@ -47,7 +46,6 @@ class ExerciseFragment : BaseFragment() {
     private var listAdapter: ParameterListAdapter? = null
     private var elements: ItemsList<ParameterModel>? = null
     private var measureUnitChoices: MutableList<MeasureUnitEntity>? = null
-    private var parameterTypeChoices: MutableList<ParameterTypeEntity>? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -68,17 +66,16 @@ class ExerciseFragment : BaseFragment() {
             exercise = database?.exerciseDao()?.getById(exerciseId!!)
             val parametersList = database?.exerciseParameterDao()?.getParametersForExercise(exerciseId!!)!!
             measureUnitChoices = database?.measureUnitDao()?.getAll()?.toMutableList()!!
-            parameterTypeChoices = database?.parameterTypeDao()?.getAll()?.toMutableList()!!
             val exerciseTypeChoices = database?.exerciseTypeDao()?.getAll()?.toMutableList()!!
 
             val parameterModelList = parametersList.map {
-                ParameterModel(it, measureUnitChoices!!, parameterTypeChoices!!)
+                ParameterModel(it, measureUnitChoices!!)
             }.toMutableList()
 
             withContext(Dispatchers.Main) {
 
                 exerciseTypeSpinner?.adapter = ArrayAdapter<ExerciseTypeEntity>(
-                        requireContext(), R.layout.spinner_item, exerciseTypeChoices
+                    requireContext(), R.layout.spinner_item, exerciseTypeChoices
                 )
                 exerciseTypeSpinner?.setSelection(exercise!!.typeId.toInt() - 1)
 
@@ -87,17 +84,17 @@ class ExerciseFragment : BaseFragment() {
                 elements = ItemsList(parameterModelList)
 
                 listAdapter = ParameterListAdapter(
-                        holderType = ExerciseElementViewHolder::class,
-                        layoutId = R.layout.item_exercise_element,
-                        dataSource = elements!!,
-                        onDeleteParameterClick = {
-                            GlobalScope.launch(Dispatchers.IO) {
-                                database?.exerciseParameterDao()?.delete(exerciseId!!, it.parameter.id)
-                                withContext(Dispatchers.Main) {
-                                    elements!!.remove(it)
-                                }
+                    holderType = ExerciseElementViewHolder::class,
+                    layoutId = R.layout.item_exercise_element,
+                    dataSource = elements!!,
+                    onDeleteParameterClick = {
+                        GlobalScope.launch(Dispatchers.IO) {
+                            database?.exerciseParameterDao()?.delete(exerciseId!!, it.parameter.id)
+                            withContext(Dispatchers.Main) {
+                                elements!!.remove(it)
                             }
                         }
+                    }
                 )
                 recyclerView?.adapter = listAdapter
                 recyclerView?.layoutManager = LinearLayoutManager(activity)
@@ -113,16 +110,16 @@ class ExerciseFragment : BaseFragment() {
 
     private fun createNewParameter(parameter: ParameterEntity? = null) {
         GlobalScope.launch(Dispatchers.IO) {
-            val parameterEntity = parameter?.copy() ?: ParameterEntity("", 1, 1)
+            val parameterEntity = parameter?.copy() ?: ParameterEntity("", 1)
             parameterEntity.id = 0
             parameterEntity.id = database?.parameterDao()?.insert(parameterEntity)!!
             database?.exerciseParameterDao()?.insert(ExerciseParameterEntity(
-                    exerciseId!!,
-                    parameterEntity.id
+                exerciseId!!,
+                parameterEntity.id
             ))
             withContext(Dispatchers.Main) {
                 elements?.add(
-                        ParameterModel(parameterEntity, measureUnitChoices!!, parameterTypeChoices!!)
+                    ParameterModel(parameterEntity, measureUnitChoices!!)
                 )
             }
         }
