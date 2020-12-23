@@ -30,7 +30,7 @@ class LoginActivity : BaseActivity() {
         confirm_button.setOnClickListener {
             val token = ApiUtils.encodeEmailAndPasswordToAuthorizationHeader(email_et.text.toString(), password_et.text.toString())
             taskContainer.add(
-                    Api.login(token).subscribe(
+                    Api.fakeLogin(token).subscribe(
                             { onResponse(it, token) },
                             { onFail(it) }
                     )

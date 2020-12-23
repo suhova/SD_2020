@@ -16,6 +16,34 @@ object AuthRepository {
     const val USER_TOKEN = "user_token_key"
     const val USER_INFO_KEY = "user_info_key"
 
+//    fun doOnSuccessLogin(activity: BaseActivity) {
+//        activity.apply {
+//            CurrentUserRepository.currentUser.value = userInfo
+//            GlobalScope.launch(Dispatchers.IO) {
+//                var user = database?.userDao()?.getByEmail("userInfo.email")
+//                if (user == null) {
+//                    user = UserEntity(
+//                            userInfo.firstName,
+//                            userInfo.lastName,
+//                            userInfo.fatherName,
+//                            userInfo.email,
+//                            userInfo.genderType.toApiStr(),
+//                            userInfo.pictureUrlStr
+//                    )
+//                    database?.userDao()?.insert(user)
+//                }
+//                withContext(Dispatchers.Main) {
+//                    if (needRemember) {
+//                        getSharedPreferences(TRAINING_PREFERENCE, Context.MODE_PRIVATE).edit().putString(USER_TOKEN, token).apply()
+//                        getSharedPreferences(TRAINING_PREFERENCE, Context.MODE_PRIVATE).edit().putString(USER_INFO_KEY, Gson().toJson(user)).apply()
+//                    }
+//                    router?.showCalendarPage()
+//                    finish()
+//                }
+//            }
+//        }
+//    }
+
     fun doOnLogin(activity: BaseActivity, token: String, needRemember: Boolean, userInfo: UserInfo) {
         activity.apply {
             CurrentUserRepository.currentUser.value = userInfo
